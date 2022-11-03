@@ -1,16 +1,80 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  /*   border: 1px solid red; */
+}
+
+.container {
+  height: 100vh;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .box {
-  max-width: 420px;
-  border: 1px solid black;
-  margin: 0 auto;
+  width: 340px;
+  height: 640px;
+  background-color: #000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border-radius: 52px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
-h1 {
+.display {
+  font-family: "Inconsolata", monospace;
+  height: 80px;
   text-align: right;
-  padding: 1.5rem;
-  margin-top: 1.5rem;
-  border: 1px solid black;
+  margin: 3.8rem 2.5rem 2rem 0;
+  font-size: 4.2rem;
+  font-weight: 100;
+  color: #fff;
 }
 
-.column {
-  clear: both;
+.keypad {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.3rem;
+  margin: 0 1.5rem;
+  font-size: 1.6rem;
+  font-weight: bold;
+}
+
+.key {
+  width: 65px;
+  height: 65px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  color: #fff;
+  font-size: 2rem;
+}
+
+.black-text {
+  color: #000;
+}
+
+.double {
+  width: 140px;
+  border-radius: 32px;
+  text-align: left;
+  padding-left: 1.5rem;
+  font-size: 2rem;
+}
+
+.orange {
+  background-color: #ffa500;
+}
+
+.light-gray {
+  background-color: #888;
+}
+
+.dark-gray {
+  background-color: #333;
 }

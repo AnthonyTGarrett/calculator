@@ -3,84 +3,42 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Hello Bulma!</title>
+    <title>Simple Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Inconsolata&display=swap"
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css"
     />
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <section class="section">
-      <div class="container has-text-centered">
-        <div class="box">
-          <div class="columns-gapless is-centered" id="wrapper">
-            <h1 class="title is-size-1 result">0</h1>
-            <div class="column is-pulled-right">
-              <button class="button is-size-3 clear is-danger" id="clear">
-                C
-              </button>
-            </div>
-            <div class="column">
-              <button class="button is-size-3 is-primary operand" id="seven">
-                7
-              </button>
-              <button class="button is-size-3 is-primary operand" id="eight">
-                8
-              </button>
-              <button class="button is-size-3 is-primary operand" id="nine">
-                9
-              </button>
-              <button class="button is-size-3 is-dark operator" id="divide">
-                /
-              </button>
-            </div>
-            <div class="column">
-              <button class="button is-size-3 is-primary operand" id="four">
-                4
-              </button>
-              <button class="button is-size-3 is-primary operand" id="five">
-                5
-              </button>
-              <button class="button is-size-3 is-primary operand" id="six">
-                6
-              </button>
-              <button class="button is-size-3 is-dark operator" id="multiply">
-                X
-              </button>
-            </div>
-            <div class="column">
-              <button class="button is-size-3 is-primary operand" id="one">
-                1
-              </button>
-              <button class="button is-size-3 is-primary operand" id="two">
-                2
-              </button>
-              <button class="button is-size-3 is-primary operand" id="three">
-                3
-              </button>
-              <button class="button is-size-3 is-dark operator" id="add">
-                +
-              </button>
-            </div>
-            <div class="column">
-              <button class="button is-size-3 is-primary operand" id="zero">
-                0
-              </button>
-              <button class="button is-size-3 is-dark operand" id="dot">
-                .&nbsp;
-              </button>
-              <button class="button is-size-3 is-dark equals" id="equals">
-                =
-              </button>
-              <button class="button is-size-3 is-dark operator" id="subtract">
-                &nbsp;-&nbsp;
-              </button>
-            </div>
-          </div>
+    <div class="container">
+      <div class="box">
+        <div class="display">0</div>
+        <div class="keypad">
+          <button class="key black-text light-gray">AC</button>
+          <button class="key black-text light-gray">+/-</button>
+          <button class="key black-text light-gray">%</button>
+          <button class="key orange">/</button>
+          <button class="key dark-gray operand">7</button>
+          <button class="key dark-gray operand">8</button>
+          <button class="key dark-gray operand">9</button>
+          <button class="key orange">X</button>
+          <button class="key dark-gray operand">4</button>
+          <button class="key dark-gray operand">5</button>
+          <button class="key dark-gray operand">6</button>
+          <button class="key orange">-</button>
+          <button class="key dark-gray operand">1</button>
+          <button class="key dark-gray operand">2</button>
+          <button class="key dark-gray operand">3</button>
+          <button class="key orange">+</button>
+          <button class="key dark-gray double operand">0</button>
+          <button class="key dark-gray">.</button>
+          <button class="key orange">=</button>
         </div>
       </div>
-    </section>
+    </div>
     <script src="calc.js"></script>
   </body>
 </html>
