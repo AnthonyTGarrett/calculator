@@ -15,27 +15,47 @@
   <body>
     <div class="container">
       <div class="box">
-        <div class="display">0</div>
+        <input type="text" class="display" value="0" disabled />
         <div class="keypad">
-          <button class="key black-text light-gray allClear">AC</button>
-          <button class="key black-text light-gray">+/-</button>
-          <button class="key black-text light-gray">%</button>
-          <button class="key orange operator">/</button>
-          <button class="key dark-gray operand">7</button>
-          <button class="key dark-gray operand">8</button>
-          <button class="key dark-gray operand">9</button>
-          <button class="key orange operator">X</button>
-          <button class="key dark-gray operand">4</button>
-          <button class="key dark-gray operand">5</button>
-          <button class="key dark-gray operand">6</button>
-          <button class="key orange operator">-</button>
-          <button class="key dark-gray operand">1</button>
-          <button class="key dark-gray operand">2</button>
-          <button class="key dark-gray operand">3</button>
-          <button class="key orange operator">+</button>
-          <button class="key dark-gray double operand">0</button>
-          <button class="key dark-gray dot">.</button>
-          <button class="key orange equals">=</button>
+          <button
+            type="button"
+            class="key black-text light-gray all-clear"
+            value="all-clear"
+          >
+            AC
+          </button>
+          <button type="button" class="key black-text light-gray">+/-</button>
+          <button type="button" class="key black-text light-gray">%</button>
+          <button type="button" class="key orange operator" value="/">/</button>
+
+          <button type="button" class="key dark-gray" value="7">7</button>
+          <button type="button" class="key dark-gray" value="8">8</button>
+          <button type="button" class="key dark-gray" value="9">9</button>
+          <button type="button" class="key orange operator" value="X">X</button>
+
+          <button type="button" class="key dark-gray" value="4">4</button>
+          <button type="button" class="key dark-gray" value="5">5</button>
+          <button type="button" class="key dark-gray" value="6">6</button>
+          <button type="button" class="key orange operator" value="-">-</button>
+
+          <button type="button" class="key dark-gray" value="1">1</button>
+          <button type="button" class="key dark-gray" value="2">2</button>
+          <button type="button" class="key dark-gray" value="3">3</button>
+          <button type="button" class="key orange operator" value="+">+</button>
+
+          <button type="button" class="key dark-gray double" value="0">
+            0
+          </button>
+          <button type="button" class="key dark-gray decimal" value=".">
+            .
+          </button>
+          <button
+            type="button"
+            class="key orange equal-sign operator"
+            value="="
+          >
+            =
+          </button>
         </div>
       </div>
     </div>

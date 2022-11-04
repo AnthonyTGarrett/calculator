@@ -1,81 +1,54 @@
-let operandArr = [];
-let displayValue = "";
-
-const resetButton = document.querySelector(".allClear");
-const operands = Array.from(document.querySelectorAll(".operand"));
-const operators = Array.from(document.querySelectorAll(".operator"));
-const display = document.querySelector(".display");
-
-const evaluate = (operator, currentDisplay) => {
-  console.log("We made it");
-  if (operandArr.length === 0) {
-    operandArr.push(parseInt(currentDisplay));
-    console.log(operandArr);
-  } else if (operandArr.length === 1) {
-    displayValue = parseInt(
-      operate(operator, operandArr.pop(), parseInt(currentDisplay))
-    );
-    operandArr.push(displayValue);
-    display.textContent = displayValue;
-    displayValue = "";
-  }
+const calculator = {
+  displayValue: "0",
+  firstOperand: null,
+  waitingForSecondOperand: false,
+  operator: null,
 };
 
-const updateDisplay = (currentValue) => {
-  displayValue = currentValue;
-  display.textContent = displayValue;
-};
+function updateDisplay() {
+  const display = document.querySelector(".display");
+  display.value = calculator.displayValue;
+}
 
-resetButton.addEventListener("click", () => {
-  displayValue = "";
-  display.textContent = 0;
-  operandArr = [];
-});
+updateDisplay();
 
-operands.forEach((element) => {
-  element.addEventListener("click", (event) => {
-    if (operandArr.length === 1) {
-      updateDisplay("");
-      displayValue = displayValue + event.target.textContent;
-      updateDisplay(displayValue);
-    } else {
-      displayValue = displayValue + event.target.textContent;
-      updateDisplay(displayValue);
-    }
-  });
-});
+function resetCalc() {
+  calculator.displayValue = "0";
+  calculator.firstOperand = null;
+  calculator.waitingForSecondOperand = false;
+  calculator.operator = null;
+}
 
-operators.forEach((element) => {
-  element.addEventListener("click", (event) => {
-    evaluate(event.target.textContent, displayValue);
-  });
+const keys = document.querySelector(".keypad");
+keys.addEventListener("click", (e) => {
+  if (!e.target.matches("button")) return;
 });
 
 // Math functions
 // Returns the result of the math problem
-const add = (num1, num2) => {
+function add(num1, num2) {
   return num1 + num2;
-};
+}
 
-const subtract = (num1, num2) => {
+function subtract(num1, num2) {
   return num1 - num2;
-};
+}
 
-const multiply = (num1, num2) => {
+function multiply(num1, num2) {
   return num1 * num2;
-};
+}
 
-const divide = (num1, num2) => {
+function divide(num1, num2) {
   if (num2 === 0) {
     updateDisplay("Don't even try it!");
     return;
   }
   return num1 / num2;
-};
+}
 
 // Determine which math function to call
 // Returns result of math operation
-const operate = (operator, num1, num2) => {
+function operate(operator, num1, num2) {
   switch (operator) {
     case "+":
       return add(num1, num2);
@@ -90,4 +63,4 @@ const operate = (operator, num1, num2) => {
       return divide(num1, num2);
       break;
   }
-};
+}

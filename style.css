@@ -33,6 +33,8 @@
   font-size: 4.2rem;
   font-weight: 100;
   color: #fff;
+  background-color: #000;
+  border: none;
 }
 
 .keypad {
