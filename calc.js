@@ -15,6 +15,7 @@ const evaluate = (operator, currentDisplay) => {
     displayValue = parseInt(
       operate(operator, operandArr.pop(), parseInt(currentDisplay))
     );
+    operandArr.push(displayValue);
     display.textContent = displayValue;
     displayValue = "";
   }
