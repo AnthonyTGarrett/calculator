@@ -19,48 +19,89 @@ function resetCalc() {
   calculator.operator = null;
 }
 
+function inputOperand(digit) {
+  const { displayValue, waitingForSecondOperand } = calculator;
+
+  if (waitingForSecondOperand === true) {
+    calculator.displayValue = digit;
+    calculator.waitingForSecondOperand = false;
+  } else {
+    calculator.displayValue =
+      displayValue === "0" ? digit : displayValue + digit;
+  }
+}
+
+function inputDecimal(dot) {
+  if (calculator.waitingForSecondOperand === true) {
+    calculator.displayValue = "0.";
+    calculator.waitingForSecondOperand = false;
+    return;
+  }
+
+  if (!calculator.displayValue.includes(dot)) {
+    calculator.displayValue += dot;
+  }
+}
+
+function handleOperator(nextOperator) {
+  const { firstOperand, displayValue, operator } = calculator;
+  const inputValue = parseFloat(displayValue);
+
+  if (operator && calculator.waitingForSecondOperand) {
+    calculator.operator = nextOperator;
+    return;
+  }
+
+  if (firstOperand == null && !isNaN(inputValue)) {
+    calculator.firstOperand = inputValue;
+  } else if (operator) {
+    const result = calculate(firstOperand, inputValue, operator);
+
+    calculator.displayValue = `${parseFloat(result.toFixed(7))}`;
+    calculator.firstOperand = result;
+  }
+
+  calculator.waitingForSecondOperand = true;
+  calculator.operator = nextOperator;
+}
+
 const keys = document.querySelector(".keypad");
 keys.addEventListener("click", (e) => {
   if (!e.target.matches("button")) return;
+
+  switch (e.target.value) {
+    case "+":
+    case "-":
+    case "*":
+    case "/":
+    case "=":
+      handleOperator(e.target.value);
+      break;
+    case ".":
+      inputDecimal(e.target.value);
+      break;
+    case "all-clear":
+      resetCalc();
+      break;
+    default:
+      if (Number.isInteger(parseFloat(e.target.value))) {
+        inputOperand(e.target.value);
+      }
+  }
+
+  updateDisplay();
 });
 
-// Math functions
-// Returns the result of the math problem
-function add(num1, num2) {
-  return num1 + num2;
-}
-
-function subtract(num1, num2) {
-  return num1 - num2;
-}
-
-function multiply(num1, num2) {
-  return num1 * num2;
-}
-
-function divide(num1, num2) {
-  if (num2 === 0) {
-    updateDisplay("Don't even try it!");
-    return;
+function calculate(firstOperand, secondOperand, operator) {
+  if (operator === "+") {
+    return firstOperand + secondOperand;
+  } else if (operator === "-") {
+    return firstOperand - secondOperand;
+  } else if (operator === "*") {
+    return firstOperand * secondOperand;
+  } else if (operator === "/") {
+    return firstOperand / secondOperand;
   }
-  return num1 / num2;
-}
 
-// Determine which math function to call
-// Returns result of math operation
-function operate(operator, num1, num2) {
-  switch (operator) {
-    case "+":
-      return add(num1, num2);
-      break;
-    case "-":
-      return subtract(num1, num2);
-      break;
-    case "*":
-      return multiply(num1, num2);
-      break;
-    case "/":
-      return divide(num1, num2);
-      break;
-  }
+  return secondOperand;
 }
